@@ -11,7 +11,8 @@ This package exposes the function `iccf`, which can be queried in help mode for 
 This is a toy example between two signals where the delay is set to 2.
 
 ```
-using ICCF, PyPlot
+using ICCF
+using PyPlot # must be independently installed
 
 delay = 2
 

@@ -1,5 +1,7 @@
 # ICCF 
 
+To install and use this package, please add first the registry [AINJuliaRegistry](https://github.com/HITS-AIN/AINJuliaRegistry).
+
 Julia implementation of interpolated cross-correlation function.
 
 This package exposes the function `iccf`, which can be queried in help mode for more information.
@@ -40,5 +42,13 @@ plot(delays,ccf,"o--")
 ## Example 2
 
 ```
-using GPCCData
+using ICCF
+using GPCCData # must be independently installed
+using PyPlot # must be independently installed
+
+tobs, yobs, σobs,  = readdataset(source = "3C120");
+
+delays, ccf = iccf(y1 = yobs[1], y2 = yobs[2], t1 = tobs[1], t2 = tobs[2], maxτ = 140)
+
+figure(); plot(delays, ccf, "ko-")
 ```

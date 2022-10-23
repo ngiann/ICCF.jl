@@ -40,7 +40,8 @@ plot(delays,ccf,"o--")
 ## Example 2
 
 ```
-using GPCCData
+using ICCF
+using GPCCData # must be independently installed
 using PyPlot # must be independently installed
 
 tobs, yobs, σobs,  = readdataset(source = "3C120");

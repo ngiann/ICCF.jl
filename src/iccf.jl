@@ -23,9 +23,10 @@ Calculated ICCF between two lightcurves
 Infer delay for toy example where delay is known to be equal to 2.
 
 ```julia-repl
-julia> using ICCF, PyPlot # import packages
+julia> using ICCF, PyPlot 
+julia> delay = 2
 julia> signal(x) = sin(x) + 4*exp(-2*(x-3)^2)
-julia> shiftedsignal(x) = signal(x-2)
+julia> shiftedsignal(x) = signal(x-delay)
 julia> σnoise = 0.2
 julia> numobs = 25
 julia> t1, t2 = sort(rand(numobs)) * 10, sort(rand(numobs)) * 10
@@ -35,9 +36,10 @@ julia> figure()
 julia> plot(t1, y1, "bo", label="observed 1st lightcurve")
 julia> plot(t2, y2, "ro", label="observed 2nd lightcurve")
 julia> delays, ccf = iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = 12, dτ = 0.1, showplot = false)
+julia> figure(); plot(delays, ccf, "ko-")
 ```
 """
-function iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = maxτ,  dτ = 0.5, showplot = true)
+function iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = maxτ,  dτ = 0.5, showplot = false)
 
     # considered range of delays
     

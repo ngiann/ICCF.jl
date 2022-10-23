@@ -11,9 +11,11 @@ This is a toy example between two signals where the delay is set to 2.
 ```
 using ICCF, PyPlot
 
+delay = 2
+
 # define signals
 signal(x) = sin(x) + 4*exp(-2*(x-3)^2)
-shiftedsignal(x) = signal(x-2)
+shiftedsignal(x) = signal(x-delay)
 
 # generate observations
 σnoise = 0.2

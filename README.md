@@ -33,7 +33,7 @@ plot(t1, y1, "bo", label="observed 1st lightcurve")
 plot(t2, y2, "ro", label="observed 2nd lightcurve")
 
 # run iccf
-delays, ccf = iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = 12, dτ = 0.1, showplot = false)
+delays, ccf = iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = 10, dτ = 0.1, showplot = false)
 
 # plot outcome
 figure()

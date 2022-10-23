@@ -1,8 +1,8 @@
 # ICCF 
 
-To install and use this package, please add first the registry [AINJuliaRegistry](https://github.com/HITS-AIN/AINJuliaRegistry).
+This is a Julia implementation of interpolated cross-correlation function.
 
-Julia implementation of interpolated cross-correlation function.
+To install and use this package, please add first the registry [AINJuliaRegistry](https://github.com/HITS-AIN/AINJuliaRegistry).
 
 This package exposes the function `iccf`, which can be queried in help mode for more information.
 

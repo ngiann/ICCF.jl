@@ -41,4 +41,14 @@ plot(delays,ccf,"o--")
 
 ```
 using GPCCData
+using PyPlot # must be independently installed
+
+tobs, yobs, σobs,  = readdataset(source = "3C120");
+
+delays, ccf = iccf(y1 = yobs[1], y2 = yobs[2], t1 = tobs[1], t2 = tobs[2], maxτ = 140)
+
+figure(); plot(delays, ccf, "ko-")
+
+```
+
 ```

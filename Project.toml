@@ -1,7 +1,7 @@
 name = "ICCF"
 uuid = "2763b4c3-16b4-4cc4-aaa5-7caef3d341dd"
 authors = ["ngiann <ngiann@gmail.com> and contributors"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 Interpolations = "a98d9a8b-a2ab-59e6-89dd-64a1c18fca59"

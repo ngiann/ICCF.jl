@@ -1,8 +1,8 @@
 # ICCF 
 
-To install and use this package, please add first the registry [AINJuliaRegistry](https://github.com/HITS-AIN/AINJuliaRegistry).
+This is a Julia implementation of interpolated cross-correlation function.
 
-Julia implementation of interpolated cross-correlation function.
+To install and use this package, please add first the registry [AINJuliaRegistry](https://github.com/HITS-AIN/AINJuliaRegistry).
 
 This package exposes the function `iccf`, which can be queried in help mode for more information.
 
@@ -11,7 +11,8 @@ This package exposes the function `iccf`, which can be queried in help mode for 
 This is a toy example between two signals where the delay is set to 2.
 
 ```
-using ICCF, PyPlot
+using ICCF
+using PyPlot # must be independently installed
 
 delay = 2
 
@@ -32,7 +33,7 @@ plot(t1, y1, "bo", label="observed 1st lightcurve")
 plot(t2, y2, "ro", label="observed 2nd lightcurve")
 
 # run iccf
-delays, ccf = iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = 12, dτ = 0.1, showplot = false)
+delays, ccf = iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = 10, dτ = 0.1, showplot = false)
 
 # plot outcome
 figure()

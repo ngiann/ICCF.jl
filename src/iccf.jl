@@ -45,11 +45,11 @@ function iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = maxτ, 
     
     τrange = minτ:dτ:maxτ
 
-    # Linearly nterpolate 2nd observed light curve
+    # Linearly interpolate 2nd observed light curve
 
     f2 = linear_interpolation(t2, y2, extrapolation_bc = mean(y2))
 
-    # Store here cross-correlation measure, initialise
+    # Store here overlap measure ccf
 
     score = zeros(length(τrange))
     
@@ -66,11 +66,14 @@ function iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = maxτ, 
         
         tleft  = min(max(minimum(tshifted), minimum(t2)), tright)
 
-        # find points contained between above limits 
+        # find indices of points contained between above limits 
 
         containedindices = intersect(findall(tshifted .> tleft), findall(tshifted .< tright))
 
         # Calculate means and standard deviations
+        # y1[containedindices] are the fluxes of y1 contained in interval
+        # f2.(tshifted[containedindices]) are the predictions of the 
+        # interpolated 2nd lightcurve at the shifted times in array tshifted
 
         μ1, μ2 = mean(y1[containedindices]), mean(f2.(tshifted[containedindices]))
         σ1, σ2 =  std(y1[containedindices]),  std(f2.(tshifted[containedindices]))

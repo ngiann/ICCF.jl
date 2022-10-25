@@ -1,5 +1,5 @@
 """
-    ccf, delays = iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = maxτ, dτ = 0.5, showplot = false)
+    ccf, delays = iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = maxτ, dτ = 0.1, showplot = false)
 
 Calculated ICCF between two lightcurves
 
@@ -10,7 +10,7 @@ Calculated ICCF between two lightcurves
 - `y2` are the observed fluxes of the second lightcurve.
 - `minτ` is the minimum considered delay, default value is 0.
 - `maxτ` is the maximum considered delay.
-- `dτ` is the delay step size, default value is 0.5.
+- `dτ` is the delay step size, default value is 0.1.
 - when `showplot` is set to true, it will plot the progress of ICCF. Default value is false.
 
 # Outputs
@@ -39,7 +39,7 @@ julia> delays, ccf = iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, max
 julia> figure(); plot(delays, ccf, "ko-")
 ```
 """
-function iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = maxτ,  dτ = 0.5, showplot = false)
+function iccf(; t1 = t1, t2 = t2, y1 = y1, y2 = y2, minτ = 0.0, maxτ = maxτ,  dτ = 0.1, showplot = false)
 
     # considered range of delays
     

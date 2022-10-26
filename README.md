@@ -83,7 +83,7 @@ figure(); plot(tres, yres, "ko-"); title("resampled lightcurve")
 
 ## Example 4
 
-This is an example that uses function `bootstrapanalysis` to obtain a set of samples of the centroid.
+This is an example that uses function `bootstrapanalysis` to obtain a set of samples of the centroid for real observations.
 
 ```
 using ICCF

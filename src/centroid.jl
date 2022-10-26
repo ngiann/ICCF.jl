@@ -16,12 +16,23 @@ function centroid(; τ = τ, avgcurve = avgcurve, threshold = threshold)
     
     rightindex = 0
 
-    while true
-        rightindex += 1
-        if avgcurve[peakindex + rightindex] <= val
-            break
+    try
+        while true
+            rightindex += 1
+            if avgcurve[peakindex + rightindex] <= val
+                break
+            end
+        end
+    catch E
+        if isa(E, BoundsError)
+            @warn @sprintf("Cannot find right bracket of interval around peak at %.4f given threshold %.2f.", τ[peakindex], threshold)
+            @warn "Consider altering theshold, minτ or maxτ"
+            rightindex -= 1
+        else
+            throw(E)
         end
     end
+    
 
     absoluterightindex = peakindex + rightindex
 
@@ -30,10 +41,21 @@ function centroid(; τ = τ, avgcurve = avgcurve, threshold = threshold)
     
     leftindex = 0
 
-    while true
-        leftindex -= 1
-        if avgcurve[peakindex + leftindex] <= val
-            break
+    try
+        while true
+            leftindex -= 1
+            if avgcurve[peakindex + leftindex] <= val
+                break
+            end
+        end
+    catch E
+        if isa(E, BoundsError)
+            @warn @sprintf("Cannot find left bracket of interval around peak at %.4f given threshold %.2f.", τ[peakindex], threshold)
+            @warn "Consider altering theshold, minτ or maxτ"
+            
+            leftindex += 1
+        else
+            throw(E)
         end
     end
 

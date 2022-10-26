@@ -82,7 +82,7 @@ figure(); plot(tres, yres, "ko-"); title("resampled lightcurve")
 
 
 
-## Example 5
+## Example 4
 
 This is an example that uses function `bootstrapanalysis` to obtain a set of samples of the centroid on toy data where the delayed can be specified.
 ```

@@ -108,7 +108,7 @@ plot(t1, y1, "bo", label="observed 1st lightcurve")
 plot(t2, y2, "ro", label="observed 2nd lightcurve")
 
 # get centroid samples
-c = bootstrapanalysis(repeats = 5000, t1=t1, t2=t2, y1=y1, y2=y2, σ1=σnoise, σ2=σnoise, maxτ=10, dτ = 0.1);
+c = bootstrapanalysis(repeats = 5000, t1=t1, t2=t2, y1=y1, y2=y2, σ1=σnoise*ones(length(y1)), σ2=σnoise*ones(length(y2)), maxτ=10, dτ = 0.1);
 
 # plot outcome
 figure()

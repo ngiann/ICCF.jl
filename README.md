@@ -82,38 +82,7 @@ figure(); plot(tres, yres, "ko-"); title("resampled lightcurve")
 
 
 
-## Example 4
 
-This is an example that uses function `bootstrapanalysis` to obtain a set of samples of the centroid on toy data where the delayed can be specified.
-```
-using ICCF
-using PyPlot # must be independently installed
-
-delay = 2
-
-# define signals
-signal(x) = sin(x) + 4*exp(-2*(x-3)^2)
-shiftedsignal(x) = signal(x-delay)
-
-# generate observations
-σnoise = 0.2
-numobs = 25
-t1, t2 = sort(rand(numobs)) * 10, sort(rand(numobs)) * 10
-y1 = signal.(t1) + σnoise*randn(numobs)
-y2 = shiftedsignal.(t2) + σnoise*randn(numobs)
-
-# plot observations
-figure()
-plot(t1, y1, "bo", label="observed 1st lightcurve")
-plot(t2, y2, "ro", label="observed 2nd lightcurve")
-
-# get centroid samples
-c = bootstrapanalysis(repeats = 5000, t1=t1, t2=t2, y1=y1, y2=y2, σ1=σnoise*ones(length(y1)), σ2=σnoise*ones(length(y2)), maxτ=10, dτ = 0.1);
-
-# plot outcome
-figure()
-hist(c,30)
-```
 
 ## Example 5
 

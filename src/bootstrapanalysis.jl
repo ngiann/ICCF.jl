@@ -4,7 +4,6 @@
 Given a pair of lightcurves returns the distribution of the centroid as obtained via bootstrapping.
 
 # Arguments
-# Arguments
 - `t1` are the observed times of the first lightcurve.
 - `t2` are the observed times of the second lightcurve.
 - `y1` are the observed fluxes of the first lightcurve.

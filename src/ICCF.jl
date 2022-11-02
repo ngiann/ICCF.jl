@@ -2,6 +2,8 @@ module ICCF
 
     using Interpolations, Statistics, PyPlot, Printf, Random, ProgressMeter
 
+    using MiscUtil: CVindices, taketestfold, taketrainfold
+    
     include("iccf.jl")
 
     include("resamplingwithnoise.jl")

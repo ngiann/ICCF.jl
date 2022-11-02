@@ -1,11 +1,11 @@
-function predict(delay; ttrain = ttrain, ytrain = ytrain, ttest = ttest)
+function fluxprediction(delay; ttrain = ttrain, ytrain = ytrain, ttest = ttest)
 
-    _predict(; ttrain = ttrain.+delay, ytrain = ytrain, ttest = ttest)
+    _fluxprediction(; ttrain = ttrain.+delay, ytrain = ytrain, ttest = ttest)
 
 end
 
 
-function _predict(; ttrain = ttrain, ytrain = ytrain, ttest = ttest)
+function _fluxprediction(; ttrain = ttrain, ytrain = ytrain, ttest = ttest)
 
     f = linear_interpolation(ttrain, ytrain, extrapolation_bc = mean(ytrain))
 
@@ -16,7 +16,7 @@ end
 
 function mseprediction(delay; ttrain = ttrain, ytrain = ytrain, ttest = ttest, ytest = ytest)
 
-    ypred = predict(delay; ttrain = ttrain, ytrain = ytrain, ttest = ttest.+delay)
+    ypred = fluxprediction(delay; ttrain = ttrain, ytrain = ytrain, ttest = ttest.+delay)
 
     mean(sum(ypred .- ytest).^2)
 
